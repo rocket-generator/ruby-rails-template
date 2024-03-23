@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserRepository
   def initialize(db = User)
     @db = db
@@ -11,8 +13,8 @@ class UserRepository
     safe_order_columns = %w[created_at updated_at id]
     safe_directions = %w[asc desc]
 
-    order = safe_order_columns.include?(order) ? order : 'created_at'
-    direction = safe_directions.include?(direction) ? direction : 'asc'
+    order = 'created_at' unless safe_order_columns.include?(order)
+    direction = 'asc' unless safe_directions.include?(direction)
 
     @db.order(Arel.sql("#{order} #{direction}")).offset(offset).limit(limit)
   end

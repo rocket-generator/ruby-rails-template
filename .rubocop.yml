@@ -1,0 +1,11 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - "db/schema*.rb"
+  TargetRubyVersion: 2.7
+  SuggestExtensions: false
