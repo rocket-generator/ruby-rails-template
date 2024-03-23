@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# UserRepository is a repository class for User model
 class UserRepository
   def initialize(db = User)
     @db = db
