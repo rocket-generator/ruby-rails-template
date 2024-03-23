@@ -7,8 +7,8 @@ class UsersGetUsecase
   end
 
   def execute(offset: 0, limit: 10, order: 'created_at', direction: 'asc')
-    data = @user_service.get(offset: offset, limit: limit, order: order, direction: direction)
+    data = @user_service.get(offset:, limit:, order:, direction:)
     count = @user_service.count
-    CollectionDto.create_from_array(data: data, count: count)
+    CollectionDto.create_from_array(data:, count:)
   end
 end

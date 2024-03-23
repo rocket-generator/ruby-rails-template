@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # UsersResponse is a response object for user model collection
-class UsersResponse < Data.define(:data, :count)
+UsersResponse = Data.define(:data, :count) do
   def self.create_from_dto(collection:)
     result = []
     collection.data.each do |dto|
