@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
   gem 'sqlite3', '~> 1.7', '>= 1.7.3'
+  gem 'faker'
 end
 
 group :development do
