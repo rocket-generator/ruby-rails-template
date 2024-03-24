@@ -1,0 +1,44 @@
+# frozen_string_literal: true
+
+# {{ .Name.Singular.Title }}Repository is a repository class for {{ .Name.Singular.Title }} model
+class {{ .Name.Singular.Title }}Repository
+  def initialize(db = {{ .Name.Singular.Title }})
+    @db = db
+  end
+
+  def find_by_id(id:)
+    @db.find(id)
+  end
+
+  def list(offset: 0, limit: 10, order: 'created_at', direction: 'asc')
+    safe_order_columns = %w[created_at updated_at id]
+    safe_directions = %w[asc desc]
+
+    order = 'created_at' unless safe_order_columns.include?(order)
+    direction = 'asc' unless safe_directions.include?(direction)
+
+    @db.order(Arel.sql("#{order} #{direction}")).offset(offset).limit(limit)
+  end
+
+  def count
+    @db.count
+  end
+
+  def list_all
+    @db.all
+  end
+
+  def create(params)
+    @db.create(params)
+  end
+
+  def update(id:, params:)
+    model = @db.find(id)
+    model.update(params)
+  end
+
+  def delete(id:)
+    model = @db.find(id)
+    model.destroy
+  end
+end
